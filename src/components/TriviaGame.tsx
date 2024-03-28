@@ -87,9 +87,7 @@ const TriviaGame: React.FC<TriviaGameProps> = ({
             </button>
             <button
               onClick={goToNextQuestion}
-              disabled={
-                currentQuestionIndex === questions.length - 1 || !isAnswered
-              }
+              disabled={currentQuestionIndex === questions.length - 1}
               style={{ marginLeft: "10px", marginTop: "10px" }}
             >
               Next Question
