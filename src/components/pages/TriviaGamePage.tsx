@@ -45,10 +45,11 @@ const TriviaGame: React.FC<TriviaGameProps> = ({
         question={questions[currentQuestionIndex].question}
         answers={questions[currentQuestionIndex].answers.map((answer) => ({
           label: answer,
-          selected: answer === getSelectedAnswer()?.label,
-          correct: answer === questions[currentQuestionIndex].correctAnswer,
+          selected: answer === getSelectedAnswer()?.label, // Set selected based on userAnswers
+          correct: answer === questions[currentQuestionIndex].correctAnswer, // Mark correct answer
         }))}
         onAnswerSelect={handleAnswerSelection}
+        isAnswered={isAnswered} // Pass isAnswered prop to Card component
       />
       <div style={{ display: "flex", justifyContent: "center" }}>
         <button

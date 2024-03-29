@@ -1,4 +1,3 @@
-// StartPage.tsx
 import React, { useState } from "react";
 import TriviaGame from "./components/pages/TriviaGamePage";
 import { AnswerData } from "./components/ui/Card";
@@ -10,6 +9,7 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.StartGame); // Initialize to false
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState<boolean>(false); // Initialize to false
+  const [score, setScore] = useState<number>(0); // Initialize as an empty object with string keys and boolean values
 
   const startGame = () => {
     // Function to start game
@@ -18,8 +18,6 @@ const App: React.FC = () => {
     setIsAnswered(false); // Reset isAnswered state
   };
 
-  const [userAnswers, setUserAnswers] = useState<Record<string, boolean>>({}); // Initialize as an empty object with string keys and boolean values
-
   const handleAnswerSelect = (answer: AnswerData) => {
     // Funcation to handle user selecting an answer in TriviaGame
     if (!isAnswered) {
@@ -27,6 +25,9 @@ const App: React.FC = () => {
     }
     if (currentQuestionIndex === questions.length - 1) {
       setCurrentPage(Page.GameOver);
+    }
+    if (answer.correct) {
+      setScore(score + 1);
     }
   };
 
@@ -48,7 +49,7 @@ const App: React.FC = () => {
 
   // Function to handle restarting the game
   const handleRestartGame = () => {
-    setCurrentPage(Page.GameOver);
+    setCurrentPage(Page.StartGame);
     setCurrentQuestionIndex(0);
     setIsAnswered(false); // Reset isAnswered state
   };
@@ -70,7 +71,7 @@ const App: React.FC = () => {
       {currentPage === Page.GameOver && (
         <GameOverPage
           currentQuestionIndex={currentQuestionIndex}
-          userAnswers={userAnswers}
+          score={score}
           questions={questions}
           handleRestartGame={handleRestartGame}
         />

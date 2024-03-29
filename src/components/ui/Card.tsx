@@ -6,6 +6,7 @@ interface CardProps {
   question: string;
   answers: AnswerData[];
   onAnswerSelect: (answer: AnswerData) => void;
+  isAnswered?: boolean;
 }
 
 export interface AnswerData {
