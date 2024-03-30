@@ -3,6 +3,7 @@ export type Question = {
   question: string;
   answers: string[];
   correctAnswer: string;
+  value: number;
 };
 
 class QuestionImpl implements Question {
@@ -10,7 +11,8 @@ class QuestionImpl implements Question {
     public category: string,
     public question: string,
     public answers: string[],
-    public correctAnswer: string
+    public correctAnswer: string,
+    public value = 1
   ) {}
 }
 

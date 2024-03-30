@@ -19,15 +19,14 @@ const App: React.FC = () => {
   };
 
   const handleAnswerSelect = (answer: AnswerData) => {
-    // Funcation to handle user selecting an answer in TriviaGame
-    if (!isAnswered) {
-      setIsAnswered(true); // Set isAnswered state to true after selecting an answer
-    }
-    if (currentQuestionIndex === questions.length - 1) {
-      setCurrentPage(Page.GameOver);
-    }
-    if (answer.correct) {
-      setScore(score + 1);
+    const questionValue = questions[currentQuestionIndex].value;
+    if (
+      (answer as AnswerData).label ===
+      questions[currentQuestionIndex].correctAnswer
+    ) {
+      setScore(score + questionValue);
+    } else {
+      setScore(score);
     }
   };
 
@@ -70,7 +69,6 @@ const App: React.FC = () => {
       )}
       {currentPage === Page.GameOver && (
         <GameOverPage
-          currentQuestionIndex={currentQuestionIndex}
           score={score}
           questions={questions}
           handleRestartGame={handleRestartGame}
