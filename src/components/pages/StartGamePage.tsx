@@ -15,7 +15,7 @@ const StartPage: React.FC<StartPageProps> = ({ clickedStartGame }) => {
     <div
       className="card text-center"
       style={{
-        width: "400px",
+        width: "auto",
         margin: "auto",
         backdropFilter: "blur(5px)",
         backgroundColor: "rgba(255, 255, 255, 0.8)",
