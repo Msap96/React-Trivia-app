@@ -22,12 +22,9 @@ const Card: React.FC<CardProps> = ({
   answers,
   onAnswerSelect,
 }) => {
-  const [answered, setAnswered] = useState(false);
-
   const handleAnswerSelection = (answer: AnswerData) => {
     // Assuming onAnswerSelect updates the selected property for answers
     onAnswerSelect(answer);
-    setAnswered(true); // Mark as answered
   };
   return (
     <div
