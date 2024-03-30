@@ -12,7 +12,18 @@ const StartPage: React.FC<StartPageProps> = ({ clickedStartGame }) => {
     clickedStartGame();
   };
   return (
-    <div>
+    <div
+      className="card text-center"
+      style={{
+        width: "400px",
+        margin: "auto",
+        backdropFilter: "blur(5px)",
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        transition: "backdrop-filter 0.5s, background-color 0.5s",
+        borderRadius: "10px",
+        padding: "20px",
+      }}
+    >
       {!gameStarted && (
         <div className="card text-center">
           <h1>Welcome to Marc's Trivia Game</h1>
